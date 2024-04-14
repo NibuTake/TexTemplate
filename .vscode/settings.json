@@ -1,0 +1,188 @@
+{
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+
+  // ---------- Language ----------
+
+  "[tex]": {
+    // スニペット補完中にも補完を使えるようにする
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // インデント幅を2にする
+    "editor.tabSize": 2
+  },
+
+  "[latex]": {
+    // スニペット補完中にも補完を使えるようにする
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // インデント幅を2にする
+    "editor.tabSize": 2
+  },
+
+  "[bibtex]": {
+    // インデント幅を2にする
+    "editor.tabSize": 2
+  },
+  "latex-workshop.latex.autoBuild.run": "onSave",
+
+  // ---------- LaTeX Workshop ----------
+
+  // 使用パッケージのコマンドや環境の補完を有効にする
+  "latex-workshop.intellisense.package.enabled": true,
+
+  // 生成ファイルを削除するときに対象とするファイル
+  // デフォルト値に "*.synctex.gz" を追加
+  "latex-workshop.latex.clean.fileTypes": [
+    "**/*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.nav",
+    "*.dvi",
+    "*.synctex.gz",
+    "**/*.gz"
+  ],
+
+  // 生成ファイルを "out" ディレクトリに吐き出す
+  "latex-workshop.latex.outDir": "",
+
+  // ビルドのレシピ
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "ptex2pdf -> pdf",
+      "tools": ["ptex2pdf", "ptex2pdf"]
+    },
+    {
+      "name": "ptex2pdf -> bib -> pdf22",
+      "tools": ["ptex2pdf", "pbibtex", "ptex2pdf", "ptex2pdf"]
+    },
+    {
+      "name": "ptex2pdf -> ptex2pdf -> ptex2pdf*2",
+      "tools": ["ptex2pdf", "makeindex", "pbibtex", "ptex2pdf", "ptex2pdf"]
+    },
+    {
+      "name": "latexmk",
+      "tools": ["latexmk", "makeindex", "latexmk"]
+    }
+  ],
+
+  // ビルドのレシピに使われるパーツ
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": ["-silent", "-outdir=%OUTDIR%", "%DOC%"]
+    },
+    {
+      "name": "makeindex",
+      "command": "makeindex",
+      "args": ["%DOCFILE%.nlo", "-s", "nomencl.ist", "-o", "%DOCFILE%.nls"]
+    },
+    {
+      "name": "ptex2pdf",
+      "command": "ptex2pdf",
+      "args": ["-l", "-ot", "-kanji=utf8 -synctex=1", "-o", "%DOC%"]
+    },
+    {
+      "name": "pbibtex",
+      "command": "pbibtex",
+      "args": ["-kanji=utf8", "%DOCFILE%"]
+    },
+    {
+      "name": "biber",
+      "command": "biber",
+      "args": ["%DOCFILE%"]
+    },
+    {
+      "name": "xelatex",
+      "command": "xelatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    }
+  ],
+
+  "latex-workshop.latex.magic.args": [
+    "-f",
+    "-gg",
+    "-pv",
+    "-synctex=1",
+    "-interaction=nonstopmode",
+    "-file-line-error",
+    "%DOC%"
+  ],
+
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "gitmoji.onlyUseCustomEmoji": true,
+  "gitmoji.addCustomEmoji": [
+    {
+      "emoji": "✨",
+      "code": ":sparkles",
+      "description": "add new feature"
+    },
+    {
+      "emoji": "💚",
+      "code": ":green_heart",
+      "description": "About testing"
+    },
+    {
+      "emoji": "📚",
+      "code": ":books",
+      "description": "Documents"
+    },
+    {
+      "emoji": "📝",
+      "code": ":memo",
+      "description": "Comments"
+    },
+    {
+      "emoji": "🗑️",
+      "code": ":wastebasket",
+      "description": "Delete"
+    },
+    {
+      "emoji": "♻️",
+      "code": ":recycle",
+      "description": "Refactoring"
+    },
+    {
+      "emoji": "🐛",
+      "code": ":bug",
+      "description": "Fix bugs"
+    },
+    {
+      "emoji": "👍",
+      "code": ":+1",
+      "description": "Improve features"
+    }
+  ],
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "window.zoomLevel": 1,
+  "explorer.confirmDragAndDrop": false
+}
